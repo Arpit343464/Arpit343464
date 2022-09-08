@@ -24,24 +24,19 @@ public class Sparse_matrix {
     public void createMatrix(){
         Scanner sc = new Scanner(System.in);
         int count = 0, flag = 0;
-        for (int i = 0; i < nRow; i++) {
-            for (int j = 0; j < nCol; j++) {
-                System.out.printf("matrix[%d][%d] = ",i,j);
-                int element = sc.nextInt();
-                if(element != 0){
-                    count ++;
-                }
-                if(count > nRow*nCol/3){
-                    flag = 1;
-                    setItem(i, j, 0);
-                    break;
-                }
-                setItem(i, j, element);
-            }
-            if(flag == 1){
+        do{
+            System.out.print("\nEnter Row Column And element: ");
+            int row = sc.nextInt();
+            int col = sc.nextInt();
+            int element = sc.nextInt();
+            count++;
+            setItem(row, col, element);
+            if(count >= nRow*nCol/3){
                 break;
             }
-        }
+            System.out.print("Are you want to add non zero element? yes(press 1) / no(press 0): ");
+            choice = sc.nextInt();
+        }while(choice != 0);
         System.out.println("\nSparse Matrix is created");
     }
 
