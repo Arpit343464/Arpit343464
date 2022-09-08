@@ -23,7 +23,7 @@ public class Sparse_matrix {
     }
     public void createMatrix(){
         Scanner sc = new Scanner(System.in);
-        int count = 0, flag = 0;
+        int count = 0, choice = 0;
         do{
             System.out.print("\nEnter Row Column And element: ");
             int row = sc.nextInt();
