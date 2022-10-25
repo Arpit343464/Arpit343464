@@ -42,8 +42,8 @@ public class Q5_polynomialHash {
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt();
         String[] str = {"fist", "sift", "shift", "fast", "faster", "shaft"};
-        polynomialHash M1 = new polynomialHash(7, a, str);
-        polynomialHash M2 = new polynomialHash(8, a, str);
+        polynomialHash M1 = new polynomialHash(17, a, str);
+        polynomialHash M2 = new polynomialHash(37, a, str);
         M1.polynomialValue();
         M1.print();
         M2.polynomialValue();
