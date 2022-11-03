@@ -4,6 +4,7 @@ class jobToServer{
 
     int M;
     int[] keys;
+    hash2D new2DHash;
 
     public jobToServer(int M, int[] keys){
         this.M = M;
@@ -17,10 +18,9 @@ class jobToServer{
         System.out.println(Arrays.deepToString(newHash.getHashArray()));
     }
     public hash2D jobToServerWithoutCrashServer(int crashValue){
-        hash2D new2DHash = new hash2D(M, crashValue, keys);
+        new2DHash = new hash2D(M, crashValue, keys);
         return new2DHash;
     }
-
     public void printWithoutCrashServer(hash2D new2DHash){
         System.out.print("[");
         int i = 0;
@@ -49,6 +49,10 @@ class jobToServer{
         }
         System.out.print("]");
     }
+    public int contains(int key, hash2D new2DHash){
+        int server = new2DHash.search(key);
+        return server;
+    }
 }
 
 public class Q8_JobToServer {
@@ -63,5 +67,16 @@ public class Q8_JobToServer {
         System.out.print("Number of crash Server: ");
         int crashValue = sc.nextInt();
         M.printWithoutCrashServer((M.jobToServerWithoutCrashServer(crashValue)));
+        System.out.print("\nEnter Roll Number: ");
+        int rollNo;
+        while(sc.hasNext() && (rollNo = sc.nextInt()) < keys.length){
+            System.out.print("Server Number: " + M.contains(rollNo, M.new2DHash));
+            System.out.print("\nIf you want to break write yes: ");
+            String ans = sc.next();
+            if(ans.equals("yes") || ans.equals("Yes")){
+                break;
+            }
+            System.out.print("\nEnter Roll Number: ");
+        }
     }
 }
