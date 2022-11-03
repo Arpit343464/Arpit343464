@@ -93,4 +93,23 @@ public class hash2D {
         }
         return false;
     }
+
+    public int search(int key, int M, int newM, int[] arr){
+        int server = key % M;
+        if(contains(server, arr)){
+            server = key % newM;
+            while(contains(server, crashServer)){
+                server ++;
+                if(server == M){
+                    server = 0;
+                }
+            }
+        }
+        return server;
+    }
+
+    public int search(int key){
+        return search(key, newM+crashValue, newM, crashServer);
+    }
 }
+
