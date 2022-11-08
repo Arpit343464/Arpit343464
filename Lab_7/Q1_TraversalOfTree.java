@@ -11,8 +11,9 @@ class Traversal{
             return;
         }
         Stack<TreeNode> s = new Stack<>();
+        ArrayList<Integer> travel = new ArrayList<>();
         System.out.println("InOrder Traversal: ");
-        System.out.print("[ ");
+//        System.out.print("[ ");
         TreeNode count = root;
         while(count != null || s.size() > 0){
             while(count != null){
@@ -20,10 +21,12 @@ class Traversal{
                 count = count.left;
             }
             count = s.pop();
-            System.out.print(count.data + " ");
+            travel.add(count.data);
+//            System.out.print(count.data + " ");
             count = count.right;
         }
-        System.out.print("]\n");
+//        System.out.print("]\n");
+        print(travel);
     }
     public void PreOrder(){
         if(root == null){
@@ -31,19 +34,22 @@ class Traversal{
             return;
         }
         Stack<TreeNode> s = new Stack<>();
+        ArrayList<Integer> travel = new ArrayList<>();
         System.out.println("PreOrder Traversal: ");
-        System.out.print("[ ");
+//        System.out.print("[ ");
         TreeNode count = root;
         while(count != null || s.size() > 0){
             while(count != null){
-                System.out.print(count.data + " ");
+                travel.add(count.data);
+//                System.out.print(count.data + " ");
                 s.push(count);
                 count = count.left;
             }
             count = s.pop();
             count = count.right;
         }
-        System.out.print("]\n");
+//        System.out.print("]\n");
+        print(travel);
     }
     public void PostOrder(){
         if(root == null){
@@ -51,8 +57,9 @@ class Traversal{
             return;
         }
         Stack<TreeNode> s = new Stack<>();
+        ArrayList<Integer> travel = new ArrayList<>();
         System.out.println("PostOrder Traversal: ");
-        System.out.print("[ ");
+//        System.out.print("[ ");
         TreeNode count = root;
         while(count != null || s.size() > 0){
             while(count != null){
@@ -70,12 +77,14 @@ class Traversal{
             while(count == null){
                 count = s.pop();
                 if(s.size() == 0){
-                    System.out.print(count.data + " ");
+                    travel.add(count.data);
+//                    System.out.print(count.data + " ");
                     count = null;
                     break;
                 }
                 if(count.right != s.peek()){
-                    System.out.print(count.data + " ");
+                    travel.add(count.data);
+//                    System.out.print(count.data + " ");
                     count = null;
                 }
                 else{
@@ -85,7 +94,19 @@ class Traversal{
                 }
             }
         }
-        System.out.print("]");
+//        System.out.print("]");
+        print(travel);
+    }
+    public void print(ArrayList<Integer> travel){
+        System.out.print("[");
+        for (int i = 0; i < travel.size(); i++) {
+            if(i == travel.size() - 1){
+                System.out.print(travel.get(i) + "]\n");
+            }
+            else{
+                System.out.print(travel.get(i) + ", ");
+            }
+        }
     }
 }
 class TreeNode{
